@@ -3,30 +3,30 @@
 
 
 def pascal_triangle(n):
-        """
-            a function that returns a list
-                of integers representing the
-                    pascal triangle of n:
-                           . Returns an empty list if n <= 0
-                                  . assume n will be always an integer
-                                      """
-                                          pascal_tri = []
+    """
+    Generate Pascal's Triangle up to the nth row.
 
-                                              if n <= 0:
-                                                          return []
+    Parameters:
+    n (int): The number of rows of Pascal's Triangle to generate.
 
-                                                          for i in range(n):
-                                                                      if (i == 0):
-                                                                                      pascal_tri.append([1])
-                                                                                              else:
-                                                                                                              cur_row = []
-                                                                                                                          for j in range(i + 1):
-                                                                                                                                              if (j == 0 or j == i):
-                                                                                                                                                                      cur_row.append(1)
-                                                                                                                                                                                      else:
-                                                                                                                                                                                                              cur_row.append(pascal_tri[i - 1][j - 1] +
-                                                                                                                                                                                                                                                         pascal_tri[i - 1][j])
+    Returns:
+    list of lists of int: A list of lists representing Pascal's Triangle.
+    """
+    if n <= 0:
+        return []
 
-                                                                                                                                                                                                                          pascal_tri.append(cur_row)
+    # Initialize the triangle with the first row
+    triangle = [[1]]
 
-                                                                                                                                                                                                                              return (pascal_tri)
+    for i in range(1, n):
+        # Start each row with 1
+        row = [1]
+        # Calculate the middle elements
+        for j in range(1, len(triangle[i - 1])):
+            row.append(triangle[i - 1][j - 1] + triangle[i - 1][j])
+        # End each row with 1
+        row.append(1)
+        # Add the row to the triangle
+        triangle.append(row)
+
+    return triangle
