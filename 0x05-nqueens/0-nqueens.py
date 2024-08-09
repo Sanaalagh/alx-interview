@@ -2,6 +2,7 @@
 """Nqueens solution"""
 import sys
 
+
 def nqueens(N, row):
     """recursive solution for nqueens problem"""
     for col in range(N):
