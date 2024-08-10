@@ -18,3 +18,4 @@ request.get(`https://swapi-api.alx-tools.com/api/films/${movieId}/`, async (erro
     console.log(characterName);
   }
 });
+
